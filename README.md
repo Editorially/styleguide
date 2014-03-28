@@ -1,4 +1,1 @@
-styleguide
-==========
-
-Static style guide of the application
+# Editorially Style Guide

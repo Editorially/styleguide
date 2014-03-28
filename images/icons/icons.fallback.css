@@ -1,0 +1,173 @@
+.collabs-arrow { background-image: url(png/collabs-arrow.png); background-repeat: no-repeat; }
+
+.ico-activity-comments { background-image: url(png/ico-activity-comments.png); background-repeat: no-repeat; }
+
+.ico-activity-dark { background-image: url(png/ico-activity-dark.png); background-repeat: no-repeat; }
+
+.ico-activity-status { background-image: url(png/ico-activity-status.png); background-repeat: no-repeat; }
+
+.ico-add-gray { background-image: url(png/ico-add-gray.png); background-repeat: no-repeat; }
+
+.ico-add-sm { background-image: url(png/ico-add-sm.png); background-repeat: no-repeat; }
+
+.ico-all-threads { background-image: url(png/ico-all-threads.png); background-repeat: no-repeat; }
+
+.ico-arrow-down-sm,
+.select-menu .more { background-image: url(png/ico-arrow-down-sm.png); background-repeat: no-repeat; }
+
+.ico-arrow-down-white { background-image: url(png/ico-arrow-down-white.png); background-repeat: no-repeat; }
+
+.ico-arrow-left-homepage { background-image: url(png/ico-arrow-left-homepage.png); background-repeat: no-repeat; }
+
+.ico-arrow-middle-homepage { background-image: url(png/ico-arrow-middle-homepage.png); background-repeat: no-repeat; }
+
+.ico-arrow-right-homepage { background-image: url(png/ico-arrow-right-homepage.png); background-repeat: no-repeat; }
+
+.ico-back-arrow { background-image: url(png/ico-back-arrow.png); background-repeat: no-repeat; }
+
+.ico-check-dark-med,
+.status-picker input:checked + label { background-image: url(png/ico-check-dark-med.png); background-repeat: no-repeat; }
+
+.ico-check-dark,
+.preview-nav .selected a, .status-selection-menu input:checked + label, .checked-menu .selected label, .menu-panel .tag-list li.active a, .selected .filter-your-docs, .sub-menu-panel .tag-list li.active a .count { background-image: url(png/ico-check-dark.png); background-repeat: no-repeat; }
+
+.ico-check-white { background-image: url(png/ico-check-white.png); background-repeat: no-repeat; }
+
+.ico-close-dark-sm { background-image: url(png/ico-close-dark-sm.png); background-repeat: no-repeat; }
+
+.ico-close-dark { background-image: url(png/ico-close-dark.png); background-repeat: no-repeat; }
+
+.ico-close-mini { background-image: url(png/ico-close-mini.png); background-repeat: no-repeat; }
+
+.ico-close-sm,
+.closeable .close { background-image: url(png/ico-close-sm.png); background-repeat: no-repeat; }
+
+.ico-close,
+.ed-messages .msg-close { background-image: url(png/ico-close.png); background-repeat: no-repeat; }
+
+.ico-delete-red { background-image: url(png/ico-delete-red.png); background-repeat: no-repeat; }
+
+.ico-doc-grid { background-image: url(png/ico-doc-grid.png); background-repeat: no-repeat; }
+
+.ico-doc-list { background-image: url(png/ico-doc-list.png); background-repeat: no-repeat; }
+
+.ico-dropbox-account { background-image: url(png/ico-dropbox-account.png); background-repeat: no-repeat; }
+
+.ico-dropbox-homepage { background-image: url(png/ico-dropbox-homepage.png); background-repeat: no-repeat; }
+
+.ico-dropbox { background-image: url(png/ico-dropbox.png); background-repeat: no-repeat; }
+
+.ico-ed-logo-homepage { background-image: url(png/ico-ed-logo-homepage.png); background-repeat: no-repeat; }
+
+.ico-edit-blue-big { background-image: url(png/ico-edit-blue-big.png); background-repeat: no-repeat; }
+
+.ico-edit-blue { background-image: url(png/ico-edit-blue.png); background-repeat: no-repeat; }
+
+.ico-export { background-image: url(png/ico-export.png); background-repeat: no-repeat; }
+
+.ico-gear-menu { background-image: url(png/ico-gear-menu.png); background-repeat: no-repeat; }
+
+.ico-gear { background-image: url(png/ico-gear.png); background-repeat: no-repeat; }
+
+.ico-hamburger { background-image: url(png/ico-hamburger.png); background-repeat: no-repeat; }
+
+.ico-help { background-image: url(png/ico-help.png); background-repeat: no-repeat; }
+
+.ico-hover-activity { background-image: url(png/ico-hover-activity.png); background-repeat: no-repeat; }
+
+.ico-hover-add-discuss { background-image: url(png/ico-hover-add-discuss.png); background-repeat: no-repeat; }
+
+.ico-hover-discuss { background-image: url(png/ico-hover-discuss.png); background-repeat: no-repeat; }
+
+.ico-hover-edit { background-image: url(png/ico-hover-edit.png); background-repeat: no-repeat; }
+
+.ico-hover-hamburger { background-image: url(png/ico-hover-hamburger.png); background-repeat: no-repeat; }
+
+.ico-hover-help { background-image: url(png/ico-hover-help.png); background-repeat: no-repeat; }
+
+.ico-hover-home { background-image: url(png/ico-hover-home.png); background-repeat: no-repeat; }
+
+.ico-hover-info { background-image: url(png/ico-hover-info.png); background-repeat: no-repeat; }
+
+.ico-hover-inline-add-discuss { background-image: url(png/ico-hover-inline-add-discuss.png); background-repeat: no-repeat; }
+
+.ico-hover-new { background-image: url(png/ico-hover-new.png); background-repeat: no-repeat; }
+
+.ico-hover-people { background-image: url(png/ico-hover-people.png); background-repeat: no-repeat; }
+
+.ico-hover-versions { background-image: url(png/ico-hover-versions.png); background-repeat: no-repeat; }
+
+.ico-hover-view-editor { background-image: url(png/ico-hover-view-editor.png); background-repeat: no-repeat; }
+
+.ico-hover-view-html { background-image: url(png/ico-hover-view-html.png); background-repeat: no-repeat; }
+
+.ico-hover-view-outline { background-image: url(png/ico-hover-view-outline.png); background-repeat: no-repeat; }
+
+.ico-hover-view-preview { background-image: url(png/ico-hover-view-preview.png); background-repeat: no-repeat; }
+
+.ico-nav-archive { background-image: url(png/ico-nav-archive.png); background-repeat: no-repeat; }
+
+.ico-nav-cheatsheet { background-image: url(png/ico-nav-cheatsheet.png); background-repeat: no-repeat; }
+
+.ico-nav-delete { background-image: url(png/ico-nav-delete.png); background-repeat: no-repeat; }
+
+.ico-nav-export { background-image: url(png/ico-nav-export.png); background-repeat: no-repeat; }
+
+.ico-nav-help { background-image: url(png/ico-nav-help.png); background-repeat: no-repeat; }
+
+.ico-nav-integrations { background-image: url(png/ico-nav-integrations.png); background-repeat: no-repeat; }
+
+.ico-nav-leave { background-image: url(png/ico-nav-leave.png); background-repeat: no-repeat; }
+
+.ico-nav-new-doc { background-image: url(png/ico-nav-new-doc.png); background-repeat: no-repeat; }
+
+.ico-nav-next-arrow { background-image: url(png/ico-nav-next-arrow.png); background-repeat: no-repeat; }
+
+.ico-next { background-image: url(png/ico-next.png); background-repeat: no-repeat; }
+
+.ico-owner-badge { background-image: url(png/ico-owner-badge.png); background-repeat: no-repeat; }
+
+.ico-person { background-image: url(png/ico-person.png); background-repeat: no-repeat; }
+
+.ico-prev { background-image: url(png/ico-prev.png); background-repeat: no-repeat; }
+
+.ico-redo { background-image: url(png/ico-redo.png); background-repeat: no-repeat; }
+
+.ico-remove-tag { background-image: url(png/ico-remove-tag.png); background-repeat: no-repeat; }
+
+.ico-revert { background-image: url(png/ico-revert.png); background-repeat: no-repeat; }
+
+.ico-search { background-image: url(png/ico-search.png); background-repeat: no-repeat; }
+
+.ico-status-activity,
+.tmpl-doc .select-status .current-page { background-image: url(png/ico-status-activity.png); background-repeat: no-repeat; }
+
+.ico-syncing { background-image: url(png/ico-syncing.png); background-repeat: no-repeat; }
+
+.ico-upload { background-image: url(png/ico-upload.png); background-repeat: no-repeat; }
+
+.ico-wordpress-account { background-image: url(png/ico-wordpress-account.png); background-repeat: no-repeat; }
+
+.ico-wordpress-homepage { background-image: url(png/ico-wordpress-homepage.png); background-repeat: no-repeat; }
+
+.ico-wordpress { background-image: url(png/ico-wordpress.png); background-repeat: no-repeat; }
+
+.icon-check-green { background-image: url(png/icon-check-green.png); background-repeat: no-repeat; }
+
+.label-readonly { background-image: url(png/label-readonly.png); background-repeat: no-repeat; }
+
+.logo-sm { background-image: url(png/logo-sm.png); background-repeat: no-repeat; }
+
+.no-discussions-arrow,
+.discuss-initial:after { background-image: url(png/no-discussions-arrow.png); background-repeat: no-repeat; }
+
+.onboarding-arrow-1,
+.onboard-arrow:after { background-image: url(png/onboarding-arrow-1.png); background-repeat: no-repeat; }
+
+.onboarding-arrow-2 { background-image: url(png/onboarding-arrow-2.png); background-repeat: no-repeat; }
+
+.preloader-sm-light,
+.ed-messages .ui-loading span { background-image: url(png/preloader-sm-light.png); background-repeat: no-repeat; }
+
+.preloader,
+.ui-loading span { background-image: url(png/preloader.png); background-repeat: no-repeat; }

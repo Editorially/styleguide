@@ -1,0 +1,816 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie ieold ie6 touch"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie ieold ie7 touch"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie ieold ie8 touch"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie ie9 touch"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="touch" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<meta name="apple-mobile-web-app-title" content="Editorially" />
+<meta name="msapplication-TileColor" content="#333333" />
+<meta name="msapplication-TileImage" content="/assets/pinsite.png" />
+<meta name="application-name" content="Editorially" />
+
+<title></title>
+<link rel="shortcut icon" href="/favicon.ico" />
+
+<script type="text/javascript">
+    document.documentElement.className += " page-loading";
+</script>
+
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="VnNcHQp3uNcwlPret2wucpwq//GKVQQljT7ecz785V0=" name="csrf-token" />
+<script>
+/* grunticon Stylesheet Loader | https://github.com/filamentgroup/grunticon | (c) 2012 Scott Jehl, Filament Group, Inc. | MIT license. */
+window.grunticon=function(e,t){if(!e||e.length!==3)return;var n=window,r=!!n.document.createElementNS&&!!n.document.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect,i=function(t){var i=n.document.createElement("link"),s=n.document.getElementsByTagName("script")[0];i.rel="stylesheet",i.href=e[t&&r?0:t?1:2],s.parentNode.insertBefore(i,s)},s=new n.Image;s.onerror=function(){i(!1)},s.onload=function(){i(s.width===1&&s.height===1)},s.src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="};
+grunticon( [ "images/icons/icons.data.svg.css", "images//icons/icons.data.png.css", "images/icons/icons.fallback.css" ] );</script>
+<noscript><link href="images/icons/icons.fallback.css"</noscript>
+<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-34548066-1"]);_gaq.push(["_setDomainName","editorially.com"]);_gaq.push(["_setAllowLinker",!0]);/\/docs\/\d+.*\/edit/.test(document.location.pathname)?_gaq.push(["_trackPageview","/docs/editor"]):_gaq.push(["_trackPageview"]);
+(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script>
+
+<!--[if IE 8]><script src="/outer/-/js/lib/respond.min.js"></script><![endif]-->
+<!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
+typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,
+e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
+mixpanel.init("626dfbd766a6a6f540ebef2fd9050655");</script><!-- end Mixpanel -->
+
+    <!--
+<link href="/assets/share/reset.css?body=1" media="screen, projection" rel="stylesheet" type="text/css" /> 
+    <link href="/assets/share/global.css?body=1" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/assets/share/tide-buttons.css?body=1" media="screen, projection" rel="stylesheet" type="text/css" />  
+    <link href="/assets/share/tide-common.css?body=1" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/assets/share/alerts.css?body=1" media="screen, projection" rel="stylesheet" type="text/css" />
+-->
+    <link href="css/dashboard.css" media="screen, projection" rel="stylesheet" type="text/css" /> 
+    <link href="css/editor.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="css/nav-drawers.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="css/styleguide.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="css/X-rayHTML.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/X-rayHTML.js" type="text/javascript"></script>
+    <script src="js/prism.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+        $( window ).bind( "create.xrayhtml", function( e ) {
+            console.log("working");
+            var prism = !!~e.target.getAttribute( "class" ).indexOf( "prism" );
+            
+            if( prism && "Prism" in window ) {
+                $( ".prism" ).find( "code" ).addClass( "language-markup" );
+                    Prism.highlightAll();
+                }
+            });	
+    </script>
+
+
+    <script data-load-async="" data-load="js//outer.enhancements.js" src="js/enhance.js" type="text/javascript"></script>
+<script data-load-async="" data-load="js/outer.enhancements.js" src="js/enhance.config.js" type="text/javascript"></script>
+<script data-load-async="" data-load="js/outer.enhancements.js" src="js/tide.loader.js" type="text/javascript"></script>
+
+</head>
+
+<body class=" can-haz-unreadness can-haz-edit-del-discuss can-haz-margin-discussions can-haz-tags can-haz-investor can-haz-spaces can-haz-bulk-export can-haz-delete-account ">
+
+<div class="ed-messages">
+</div><!-- /end .ed-messages -->
+
+<div class="ed-outer">
+
+    
+
+<div class="ed-page visible">
+    <div class="ed-main" role="main">
+        <div class="main-content" style="padding-bottom: 3em;">
+            <div class="content-inner">
+                <h1 class="hdg-styles">Editorially Application Styleguide</h1>
+                <p>This is the styleguide for the application portion of Editorially, hopefully it will get the marketing site styles added on to it quickly. I am using as much as I can some base layout things from the application itself and will be using all the application CSS to create the modules, buttons, etc that are currently in the code. The hope is that if styles are old or not in use, we will find them and be able to delete them as we go through this as a team.</p>
+                
+                <p>Layout styles for the app are contained in two places, dashboard.scss and editor.scss (and the files it includes). I'm using the basic dashboard.scss layout for this page.</p>
+                
+                <p>We are using Sass and Compass throughout the CSS, so where applicable this guide shows the variables or mixins.</p>
+                
+                <p>NOTE: there are some inline styles being used here, this is just to make things layout and visible, such as div sizing for the color blocks. In production we would obviously not do this. In addition - we need to start using Sass more, for variables and other features to make the CSS a bit leaner.</p>
+                
+                <h2 class="hdg-styles">List of styles I can't see where they are used</h2>
+                <ul>
+                    <li>.help-tips</li>
+                    <li>.scrolltest</li>
+                    <li>.sect-account (SR - I think these are from the old account modal in dashboard.scss)</li>
+                    <li>The portion in editor.scss where it is all the margin-bottoms and min-heights</li>
+                    <li>Are we using rounded icons? There are styles but not sure if I've seen any in the app.</li>
+                </ul>
+                
+                <h1 class="hdg-styles">Color palette used</h1>
+                <p>This is all inline. TODO: Make all these colors variables and grep through the styles to swap them out.</p>
+                <div class="grid">
+                    <div class="grid-col p-tiny">
+                        <h2>Blue - #3d9ecf - $blue</h2>
+                        <div style="background-color:#3d9ecf; height: 50px; width: 50px; margin-bottom: 1em;"></div>
+                    </div>
+                    <div class="grid-col p-tiny">
+                        <h2>Dark Gray - #4d4d4d - $dk-gray</h2>
+                        <div style="background-color:#4d4d4d; height: 50px; width: 50px; margin-bottom: 1em;"></div>
+                    </div>
+                    <div class="grid-col p-tiny">
+                        <h2>Medium Gray - #999 - $med-gray</h2>
+                        <div style="background-color:#999; height: 50px; width: 50px; margin-bottom: 1em;"></div>
+                    </div>
+                    <div class="grid-col p-tiny" style="clear:left; margin-left: 0;">
+                        <h2>Light Gray - #e6e6e6 - $lt-gray</h2>
+                        <div style="background-color:#e6e6e6; height: 50px; width: 50px; margin-bottom: 1em;"></div>
+                    </div>
+                    <div class="grid-col p-tiny">
+                        <h2>Salmon - #e6624e - $salmon</h2>
+                        <div style="background-color:#e6624e; height: 50px; width: 50px; margin-bottom: 1em;"></div>
+                    </div>
+                    <div class="grid-col p-tiny">
+                        <h2>Red - #dd4b39 - $red</h2>
+                        <div style="background-color:#dd4b39; height: 50px; width: 50px; margin-bottom: 1em;"></div>
+                    </div>
+                    <div class="grid-col p-tiny" style="clear:left; margin-left: 0;">
+                        <h2>Yellow - #eab550 - $yellow</h2>
+                        <div style="background-color:#eab550; height: 50px; width: 50px; margin-bottom: 1em;"></div>
+                    </div>
+                    <div class="grid-col p-tiny">
+                        <h2>Green - #88b716 - $green</h2>
+                        <div style="background-color:#88b716; height: 50px; width: 50px; margin-bottom: 1em;"></div>
+                    </div>
+                </div> <!-- /end .grid -->
+                
+                <h1 class="hdg-styles">Global Link and Button Styles</h1>
+                <p>Buttons shown as a links, BUT, they can be used with labels and inputs in forms and also button tags, actually that's probably how they SHOULD be used There are examples below for the button and the label/input styles. Any divs with background colors or padding are simply there to be able to see these buttons in the guide.</p>
+                
+                <div data-xrayhtml class="prism">
+                    <a href="#">Main link style</a>
+                </div>
+                
+                <div data-xrayhtml class="prism">
+                    <label for="btn" class="btn" href="#">.btn <input type="submit" name="btn" value=".btn" /></label>
+                </div>
+                <div data-xrayhtml class="prism">
+                    <button class="btn btn-type-secondary" name="button">.btn .btn-type-secondary</button>
+                </div>
+                <div data-xrayhtml class="prism">
+                    <a class="btn btn-type-inverse" href="#">.btn .btn-type-inverse</a>
+                </div>
+                <div data-xrayhtml class="prism">
+                    <a class="btn btn-type-alert" href="#">.btn .btn-type-alert</a>
+                </div>
+                <div data-xrayhtml class="prism">
+                    <a class="btn btn-type-discussion" href="#">.btn .btn-type-discussion</a>
+                </div>
+                <div data-xrayhtml class="prism">
+                    <a class="btn btn-sm" href="#">.btn .btn-sm</a>
+                </div>
+                <div data-xrayhtml class="prism">
+                    <a class="btn btn-med" href="#">.btn .btn-med</a>
+                </div>
+                <div data-xrayhtml class="prism">
+                    <a class="btn btn-lg" href="#">.btn .btn-lg</a>
+                </div>
+                <div data-xrayhtml class="prism">
+                    <div style="background: #000; padding: 3px; width: 10%;">
+                        <a class="btn-nav" href="#">.btn-nav</a>
+                    </div>
+                </div>
+                 <div data-xrayhtml class="prism">
+                    <div class="sect-docs" style="background: #000; padding: 3px; width: 10%;">
+                        <a id="sect-docs" class="btn-nav" href="#">.btn-nav</a>
+                    </div>
+                </div>
+                <div data-xrayhtml class="prism">
+                    <a class="btn btn-sm btn-ico" href="#">.btn .btn-sm .btn-ico</a>
+                </div>
+                <div data-xrayhtml class="prism">
+                    <a class="load-more" href="#">.load-more</a>
+                </div>
+                <div data-xrayhtml class="prism">
+                    <div style="background: #000; padding: 3px; width: 10%;">
+                        <a class="btn-simple" href="#">.btn-simple</a>
+                    </div>
+                </div>
+                    
+                
+                <p>A note on the above button styles, the .btn-ico style needs to be used in conjunction with a icon style so the icon appears, but you get the drift of sizing and how much padding is added in here. There are small, medium and large styles for this. In addition the small, medium, and large button styles could be used with any of the above, these are all just extensions of the main button style.</p>
+            </div>
+            <div>
+                <h2 class="hdg-styles">Tooltips</h2>
+                <div data-xrayhtml class="prism">
+                    <a data-tooltip class="dir-top-center tooltipped" href="#">Hover here to see a small tooltip
+                        <div class="tooltip">
+                            <div class="tooltip-inner small">
+                                <p>I'm a small tooltip</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            
+                <div data-xrayhtml class="prism">
+                    <a data-tooltip class="dir-top-center tooltipped" href="#">Hover here to see a regular tooltip
+                        <div class="tooltip">
+                            <div class="tooltip-inner">
+                                <p>I'm a regular tooltip</p>
+                                <p>I'm a regular tooltip</p>
+                                <p>I'm a regular tooltip</p>
+                                <p>I'm a regular tooltip</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div data-xrayhtml class="prism">
+                    <a data-tooltip class="dir-top-center tooltipped" href="#">Hover here to see a delayed small tooltip
+                        <div class="tooltip delay">
+                            <div class="tooltip-inner small">
+                                <p>I'm a delayed small tooltip</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            
+            <h2 class="hdg-styles">Icons</h2>
+            <p>We use Grunt to generate SVG goodness along with all the backups. Below is an example of one such icon and the classes that would go along with it. You can find the icon style sheets in the app code here: app/assets/images/icons/[appropriate-file-name].css</p>
+            <div data-xrayhtml class="prism">
+                <a class="is-icon ico-gear" href="#">Configuration</a>
+            </div>
+            
+            <h2 class="hdg-styles">Avatar Sizes</h2>
+            <div data-xrayhtml class="prism">
+                <img class="ico-avatar avatar-sm" src="https://editorially.com/assets/ed-avatar.png" />
+            </div>
+            <div data-xrayhtml class="prism">
+                <img class="ico-avatar avatar-md" src="https://editorially.com/assets/ed-avatar.png" />
+            </div>
+            <div data-xrayhtml class="prism">
+                <img class="ico-avatar avatar-lg" src="https://editorially.com/assets/ed-avatar.png" />
+            </div>
+            
+            <h2 class="hdg-styles">Submenus</h2>
+            <p>Not sure the best way to show these here, since they depend so much on where they are in the app - mostly used for the gear menu and the head in the editor</p>            
+            <h2 class="hdg-styles">Modals</h2>
+            <p>The modals use opacity to appear and it's triggered by the overlay being open. Still trying to figure out how to show this in the guide. But for now in the app examples are the new doc modal and the cheat sheet modal.</p>
+            <!--
+<div data-xrayhtml>
+                 <div class="overlay">
+                	<div class="modal">
+                		<a class="modal-close" href="#">Close</a>
+                		<p>put content here</p>
+                	</div>
+                </div>
+            </div>
+-->
+            
+            <h2 class="hdg-styles">Form Elements</h2>
+            <p>Note: layout styles in this code are just to make this a bit more legible.</p>
+            <div data-xrayhtml class="prism">
+                <div class="grid">
+                    <div class="grid-col p-eq">
+                        <form>
+                            <label for="input" class="primary">Primary Label</label>
+                            <input id="input" type="text" class="input-text" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="hdg-styles">Alerts/Messages in the Editor</h2>
+            <p>Note: layout styles in this code are just to make this a bit more legible.</p>
+            <div data-xrayhtml class="prism">
+                <div class="grid">
+                    <div class="grid-col p-eq">
+                        <div class="ed-messages">
+                            <div class="msg-block status-error">
+                                <p>Example of an error message</p>
+                                <a class="msg-close" href="#">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- I haven't seen this, when is it used -->
+            <div data-xrayhtml class="prism">
+                <div class="grid">
+                    <div class="grid-col p-eq">
+                        <div class="ed-messages">
+                            <div class="msg-block status-info">
+                                <p>Example of an info message</p>
+                                <a class="msg-close" href="#">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div data-xrayhtml class="prism">
+                <div class="grid">
+                    <div class="grid-col p-eq">
+                        <div class="ed-messages">
+                            <div class="msg-block status-success">
+                                <p>Example of a message</p>
+                                <a class="msg-close" href="#">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div data-xrayhtml class="prism">
+                <div class="grid">
+                    <div class="grid-col p-eq">
+                        <div class="ed-messages">
+                            <div class="msg-block status-alert">
+                                <p>Example of a message</p>
+                                <a class="msg-close" href="#">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        
+            <p> The above alerts/statuses are used in conjuction with .msg to do inline errors for forms, such as invalid emails, etc.</p>
+                        
+            <h2 class="hdg-styles">Doc grid styles</h2>
+            <p>These styles are in the dashboard.scss</p>
+            <div class="doc-grid">
+                <div class="doc-cell doc-status-draft">
+                    <p class="status">Draft</p>
+                    <h3 class="doc-title-dash"><a href="#">Doc Title</a></h3>
+                    <div class="cell-foot">
+                        <p class="when">Modified <time>about 2 hours ago</time></p>
+                        <p class="who">
+                            <img class="ico-avatar avatar-sm" src="https://editorially.com/assets/ed-avatar.png" />
+                            <cite>You</cite>
+                        </p>
+                    </div>
+                    <div class="menu tool-menu config-menu collapsible collapsible-collapsed">
+                        <a class="is-icon doc-config ico-gear collapsible-heading collapsible-heading-toggle collapsible-heading-collapsed" href="#">Configuration</a>
+                        <div class="sub-menu collapsible-content collapsible-content-collapsed" aria-hidden="true">
+                    		<div class="menu-widget">
+                    			<nav>
+                    				<ul>
+                    					<li><a href="#">Export</a></li>
+                                        
+                    				</ul>
+                    			</nav>
+                    		</div><!-- /end .menu-widget -->
+                    	</div><!-- /end .sub-menu -->
+                    </div>
+                </div> <!-- /end .doc-cell -->
+                <div class="doc-cell doc-status-copyediting">
+                    <p class="status">Copyediting</p>
+                    <h3 class="doc-title-dash"><a href="#">Doc Title</a></h3>
+                    <div class="cell-foot">
+                        <p class="when">Modified <time>about 2 hours ago</time></p>
+                        <p class="who">
+                            <img class="ico-avatar avatar-sm" src="https://editorially.com/assets/ed-avatar.png" />
+                            <cite>You</cite>
+                        </p>
+                    </div>
+                    <div class="menu tool-menu config-menu collapsible collapsible-collapsed">
+                        <a class="is-icon doc-config ico-gear collapsible-heading collapsible-heading-toggle collapsible-heading-collapsed" href="#">Configuration</a>
+                        <div class="sub-menu collapsible-content collapsible-content-collapsed" aria-hidden="true">
+                    		<div class="menu-widget">
+                    			<nav>
+                    				<ul>
+                    					<li><a href="#">Export</a></li>
+                                        
+                    				</ul>
+                    			</nav>
+                    		</div><!-- /end .menu-widget -->
+                    	</div><!-- /end .sub-menu -->
+                    </div>
+                </div> <!-- /end .doc-cell -->
+                <div class="doc-cell doc-status-final">
+                    <p class="status">Final</p>
+                    <h3 class="doc-title-dash"><a href="#">Doc Title</a></h3>
+                    <div class="cell-foot">
+                        <p class="when">Modified <time>about 2 hours ago</time></p>
+                        <p class="who">
+                            <img class="ico-avatar avatar-sm" src="https://editorially.com/assets/ed-avatar.png" />
+                            <cite>You</cite>
+                        </p>
+                    </div>
+                    <div class="menu tool-menu config-menu collapsible collapsible-collapsed">
+                        <a class="is-icon doc-config ico-gear collapsible-heading collapsible-heading-toggle collapsible-heading-collapsed" href="#">Configuration</a>
+                        <div class="sub-menu collapsible-content collapsible-content-collapsed" aria-hidden="true">
+                    		<div class="menu-widget">
+                    			<nav>
+                    				<ul>
+                    					<li><a href="#">Export</a></li>
+                                        
+                    				</ul>
+                    			</nav>
+                    		</div><!-- /end .menu-widget -->
+                    	</div><!-- /end .sub-menu -->
+                    </div>
+                </div> <!-- /end .doc-cell -->
+                <div class="doc-cell doc-status-reviewing">
+                    <p class="status">Reviewing</p>
+                    <h3 class="doc-title-dash"><a href="#">Doc Title</a></h3>
+                    <div class="cell-foot">
+                        <p class="when">Modified <time>about 2 hours ago</time></p>
+                        <p class="who">
+                            <img class="ico-avatar avatar-sm" src="https://editorially.com/assets/ed-avatar.png" />
+                            <cite>You</cite>
+                        </p>
+                    </div>
+                    <div class="menu tool-menu config-menu collapsible collapsible-collapsed">
+                        <a class="is-icon doc-config ico-gear collapsible-heading collapsible-heading-toggle collapsible-heading-collapsed" href="#">Configuration</a>
+                        <div class="sub-menu collapsible-content collapsible-content-collapsed" aria-hidden="true">
+                    		<div class="menu-widget">
+                    			<nav>
+                    				<ul>
+                    					<li><a href="#">Export</a></li>
+                                        
+                    				</ul>
+                    			</nav>
+                    		</div><!-- /end .menu-widget -->
+                    	</div><!-- /end .sub-menu -->
+                    </div>
+                </div> <!-- /end .doc-cell -->
+                <div class="doc-cell doc-status-revising">
+                    <p class="status">Revising</p>
+                    <h3 class="doc-title-dash"><a href="#">Doc Title</a></h3>
+                    <div class="cell-foot">
+                        <p class="when">Modified <time>about 2 hours ago</time></p>
+                        <p class="who">
+                            <img class="ico-avatar avatar-sm" src="https://editorially.com/assets/ed-avatar.png" />
+                            <cite>You</cite>
+                        </p>
+                    </div>
+                    <div class="menu tool-menu config-menu collapsible collapsible-collapsed">
+                        <a class="is-icon doc-config ico-gear collapsible-heading collapsible-heading-toggle collapsible-heading-collapsed" href="#">Configuration</a>
+                        <div class="sub-menu collapsible-content collapsible-content-collapsed" aria-hidden="true">
+                    		<div class="menu-widget">
+                    			<nav>
+                    				<ul>
+                    					<li><a href="#">Export</a></li>
+                                        
+                    				</ul>
+                    			</nav>
+                    		</div><!-- /end .menu-widget -->
+                    	</div><!-- /end .sub-menu -->
+                    </div>
+                </div> <!-- /end .doc-cell -->
+            </div>
+            <p>Showing one coded example, use inspector to see the classes that change for the different document states.</p>
+            <div data-xrayhtml class="prism">
+                <div class="doc-grid">
+                    <div class="doc-cell doc-status-revising">
+                        <p class="status">Revising</p>
+                        <h3 class="doc-title-dash"><a href="#">Doc Title</a></h3>
+                        <div class="cell-foot">
+                            <p class="when">Modified <time>about 2 hours ago</time></p>
+                            <p class="who">
+                                <img class="ico-avatar avatar-sm" src="https://editorially.com/assets/ed-avatar.png" />
+                                <cite>You</cite>
+                            </p>
+                        </div>
+                        <div class="menu tool-menu config-menu collapsible collapsible-collapsed">
+                            <a class="is-icon doc-config ico-gear collapsible-heading collapsible-heading-toggle collapsible-heading-collapsed" href="#">Configuration</a>
+                            <div class="sub-menu collapsible-content collapsible-content-collapsed" aria-hidden="true">
+                        		<div class="menu-widget">
+                        			<nav>
+                        				<ul>
+                        					<li><a href="#">Export</a></li>
+                        				</ul>
+                        			</nav>
+                        		</div><!-- /end .menu-widget -->
+                        	</div><!-- /end .sub-menu -->
+                        </div>
+                    </div> <!-- /end .doc-cell -->
+                </div>
+            </div>
+             
+            
+            <h2 class="hdg-styles">Doc list view styles</h2>
+            <table class="doc-list">
+				<thead>
+					<tr>
+						<th scope="col" class="cell-first">Name</th>
+						<th scope="col">Status</th>
+						<th scope="col">Modified</th>
+						<th scope="col">Owner</th>
+                        <th class="cell-last" scope="col"><span class="a11y">Options</span></th>
+					</tr>
+				</thead>
+				<tbody>
+				<tr>
+                    <th scope="row">
+                        <div class="doc">
+                            <a class="doc-title-dash" href="#">Draft</a>
+                        </div><!-- /end .doc -->
+                    </th>
+                    <td class="status"><span class="doc-status-bubble doc-status-reviewing"></span> Reviewing</td>
+                    <td class="time"><time datetime="2013-08-05T13:01:24">about 4 hours ago</time></td>
+                    <td class="owner"><img class="ico-avatar avatar-sm" src="https://editorially.com/assets/ed-avatar.png" alt=""> You</td>
+                    <td class="cell-last options">
+                        <div class="menu tool-menu config-menu collapsible collapsible-collapsed">
+                        	<a class="is-icon doc-config ico-gear collapsible-heading collapsible-heading-toggle collapsible-heading-collapsed" href="#document-config">Configuration<span class="collapsible-heading-status"></span></a>
+                        	<div class="sub-menu collapsible-content collapsible-content-collapsed" aria-hidden="true">
+                        		<div class="menu-widget">
+                        			<nav>
+                        				<ul>
+                        					<li><a href="#">Export</a></li>
+                                            
+                        				</ul>
+                        			</nav>
+                        		</div><!-- /end .menu-widget -->
+                        	</div><!-- /end .sub-menu -->
+                        </div><!-- /end .group-alt.p-less.tool-menu -->
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <div class="doc">
+                            <a class="doc-title-dash" href="#">Review</a>
+                        </div><!-- /end .doc -->
+                    </th>
+                    <td class="status"><span class="doc-status-bubble doc-status-draft"></span> Draft</td>
+                    <td class="time"><time datetime="2013-08-05T12:50:25">about 4 hours ago</time></td>
+                    <td class="owner"><img class="ico-avatar avatar-sm" src="https://editorially.com/assets/ed-avatar.png" alt=""> You</td>
+                    <td class="cell-last options">
+                        <div class="menu tool-menu config-menu collapsible collapsible-collapsed">
+                        	<a class="is-icon doc-config ico-gear collapsible-heading collapsible-heading-toggle collapsible-heading-collapsed" href="#document-config">Configuration<span class="collapsible-heading-status"></span></a>
+                        	<div class="sub-menu collapsible-content collapsible-content-collapsed" aria-hidden="true">
+                        		<div class="menu-widget">
+                        			<nav>
+                        				<ul>
+                        					<li><a href="#">Export</a></li>
+                                            
+                        				</ul>
+                        			</nav>
+                        		</div><!-- /end .menu-widget -->
+                        	</div><!-- /end .sub-menu -->
+                        </div><!-- /end .group-alt.p-less.tool-menu -->
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <div class="doc">
+                            <a class="doc-title-dash" href="#">Final</a>
+                        </div><!-- /end .doc -->
+                    </th>
+                    <td class="status"><span class="doc-status-bubble doc-status-final"></span> Final</td>
+                    <td class="time"><time datetime="2013-08-05T12:50:25">about 4 hours ago</time></td>
+                    <td class="owner"><img class="ico-avatar avatar-sm" src="https://editorially.com/assets/ed-avatar.png" alt=""> You</td>
+                    <td class="cell-last options">
+                        <div class="menu tool-menu config-menu collapsible collapsible-collapsed">
+                        	<a class="is-icon doc-config ico-gear collapsible-heading collapsible-heading-toggle collapsible-heading-collapsed" href="#document-config">Configuration<span class="collapsible-heading-status"></span></a>
+                        	<div class="sub-menu collapsible-content collapsible-content-collapsed" aria-hidden="true">
+                        		<div class="menu-widget">
+                        			<nav>
+                        				<ul>
+                        					<li><a href="#">Export</a></li>
+                                            
+                        				</ul>
+                        			</nav>
+                        		</div><!-- /end .menu-widget -->
+                        	</div><!-- /end .sub-menu -->
+                        </div><!-- /end .group-alt.p-less.tool-menu -->
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <div class="doc">
+                            <a class="doc-title-dash" href="#">Copy Editing</a>
+                        </div><!-- /end .doc -->
+                    </th>
+                    <td class="status"><span class="doc-status-bubble doc-status-copyediting"></span> Copyediting</td>
+                    <td class="time"><time datetime="2013-08-05T12:50:25">about 4 hours ago</time></td>
+                    <td class="owner"><img class="ico-avatar avatar-sm" src="https://editorially.com/assets/ed-avatar.png" alt=""> You</td>
+                    <td class="cell-last options">
+                        <div class="menu tool-menu config-menu collapsible collapsible-collapsed">
+                        	<a class="is-icon doc-config ico-gear collapsible-heading collapsible-heading-toggle collapsible-heading-collapsed" href="#document-config">Configuration<span class="collapsible-heading-status"></span></a>
+                        	<div class="sub-menu collapsible-content collapsible-content-collapsed" aria-hidden="true">
+                        		<div class="menu-widget">
+                        			<nav>
+                        				<ul>
+                        					<li><a href="#">Export</a></li>
+                                            
+                        				</ul>
+                        			</nav>
+                        		</div><!-- /end .menu-widget -->
+                        	</div><!-- /end .sub-menu -->
+                        </div><!-- /end .group-alt.p-less.tool-menu -->
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <div class="doc">
+                            <a class="doc-title-dash" href="#">Revising</a>
+                        </div><!-- /end .doc -->
+                    </th>
+                    <td class="status"><span class="doc-status-bubble doc-status-revising"></span> Revising</td>
+                    <td class="time"><time datetime="2013-08-05T12:50:25">about 4 hours ago</time></td>
+                    <td class="owner"><img class="ico-avatar avatar-sm" src="https://editorially.com/assets/ed-avatar.png" alt=""> You</td>
+                    <td class="cell-last options">
+                        <div class="menu tool-menu config-menu collapsible collapsible-collapsed">
+                        	<a class="is-icon doc-config ico-gear collapsible-heading collapsible-heading-toggle collapsible-heading-collapsed" href="#document-config">Configuration<span class="collapsible-heading-status"></span></a>
+                        	<div class="sub-menu collapsible-content collapsible-content-collapsed" aria-hidden="true">
+                        		<div class="menu-widget">
+                        			<nav>
+                        				<ul>
+                        					<li><a href="#">Export</a></li>
+                                            
+                        				</ul>
+                        			</nav>
+                        		</div><!-- /end .menu-widget -->
+                        	</div><!-- /end .sub-menu -->
+                        </div><!-- /end .group-alt.p-less.tool-menu -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="hdg-styles">Example of the table with one row to see the code. Use the inspector above to see what changes for the various document states.</h2>
+        <div data-xrayhtml class="prism">
+            <table class="doc-list">
+                <thead>
+                    <tr>
+                        <th scope="col" class="cell-first">Name</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Modified</th>
+                        <th scope="col">Owner</th>
+                        <th class="cell-last" scope="col"><span class="a11y">Options</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            <div class="doc">
+                                <a class="doc-title-dash" href="#">Draft</a>
+                            </div><!-- /end .doc -->
+                        </th>
+                        <td class="status"><span class="doc-status-bubble doc-status-reviewing"></span> Reviewing</td>
+                        <td class="time"><time datetime="2013-08-05T13:01:24">about 4 hours ago</time></td>
+                        <td class="owner"><img class="ico-avatar avatar-sm" src="https://editorially.com/assets/ed-avatar.png" alt=""> You</td>
+                        <td class="cell-last options">
+                            <div class="menu tool-menu config-menu collapsible collapsible-collapsed">
+                                <a class="is-icon doc-config ico-gear collapsible-heading collapsible-heading-toggle collapsible-heading-collapsed" href="#document-config">Configuration<span class="collapsible-heading-status"></span></a>
+                                <div class="sub-menu collapsible-content collapsible-content-collapsed" aria-hidden="true">
+                                    <div class="menu-widget">
+                                        <nav>
+                                            <ul>
+                                                <li><a href="#">Export</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div><!-- /end .menu-widget -->
+                                </div><!-- /end .sub-menu -->
+                            </div><!-- /end .group-alt.p-less.tool-menu -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <h2 class="hdg-styles">New Menuz</h2>
+        <p>Size down the screen to see the small screen version</p>
+        <div data-xrayhtml class="prism">
+            <div class="menu-panel" style="position: relative; top: 0; left: 0; background: #000; margin-bottom: 2em;">
+                <nav>
+                    <div class="nav-header">
+                        <div class="desktop-none versions-control">
+                            <p class="saved-status is-icon ico-check-dark" id="saved-status">Saved</p>
+                            <h2 class="status-document">
+                                <cite>Current<span class="clipping"> Version</span></cite>
+                            </h2>
+                        </div>
+                        <!-- /end .tools-hed -->
+                        <ul class="h-list counts">
+                            <li><span class="number word-count">0</span> <span>words</span></li>
+                            <li><span class="number char-count">0</span> <span>characters</span></li>
+                        </ul>
+                        <!-- <ul class="h-list doc-tags">
+                            <li>Asparagus</li>
+                            <li>Pumpkin</li>
+                            <li>Eggplant</li>
+                        </ul>
+                        <a class="is-icon ico-add-sm add-tags" href="#">Add a tag</a> -->
+                    </div>
+                    <div class="nav-border">
+                        <h4 class="doc-status-hdg"><a class="doc-status status-draft has-arrow ico-nav-next-arrow">Draft</a></h4>
+                    </div>
+                    <div class="nav-desktop">
+                        <div class="nav-group">
+                            <h3 class="nav-hdg-2">Views</h3>
+                            <ul class="h-list views-list">
+                                <li><a href="/docs/{{ unified.doc.id }}"><span class="icon-wrapper"><i class="is-icon ico-hover-view-editor"></i></span>Editor</a></li>
+                                <li><a href="/docs/{{ unified.doc.id }}/preview"><span class="icon-wrapper"><i class="is-icon ico-hover-view-preview"></i></span>Preview</a></li>
+                                <li><a href="/docs/{{ unified.doc.id }}/html"><span class="icon-wrapper"><i class="is-icon ico-hover-view-html"></i></span>HTML</a></li>
+                            </ul>
+                        </div> <!-- /end .nav-group -->
+                        <div class="nav-group">
+                            <ul class="full-width-links">
+                                <li><a class="has-icon ico-nav-new-doc new-document" href="/docs/new#new-document">New document</a></li>
+                                <li><a class="has-icon ico-nav-help" href="/help">Help</a></li>
+                                <li><a class="has-icon ico-nav-cheatsheet cheat-sheet" href="#">Cheat sheet</a></li>
+                                <li><a class="has-icon ico-nav-leave leave-document" href="/collaborate/{{ unified.doc.id }}/leave">Leave</a></li>
+                                <li><a class="has-icon ico-nav-delete delete-document" href="/docs/{{ unified.doc.id }}/delete">Delete</a></li>
+                                <li><a class="has-icon ico-nav-archive archive-document" href="">Archive</a></li>
+                            </ul>
+                        </div> <!-- /end .nav-group -->
+                        <div class="nav-group">
+                            <h3 class="nav-hdg-2">Publishing</h3>
+                            <ul class="full-width-links">
+                                <li><a class="ico-wordpress has-icon" href="/account/publishing">Connect to <span>WordPress</span></a></li>
+                                <li><a class="ico-dropbox has-icon" href="/account/publishing">Connect to <span>Dropbox</span></a></li>
+                            </ul>
+                        </div> <!-- /end .nav-group -->
+                        <div class="nav-group">
+                            <h3 class="nav-hdg-2">Export</h3>
+                            <ul class="h-list export-list">
+                                <li>
+                                    <label for="HTML">HTML <span>.html</span></label>
+                                    <input type="radio" value="html" name="HTML" class="a11y">
+                                </li>
+                                <li>
+                                    <label for="Markdown">Markdown <span>.md</span></label>
+                                    <input type="radio" value="md" name="Markdown" class="a11y">
+                                </li>
+                                <li>
+                                    <label for="Text">Plain text <span>.txt</span></label>
+                                    <input type="radio" value="txt" name="Text" class="a11y">
+                                </li>
+                                <li>
+                                    <label for="Latex">LaTeX <span>.tex</span></label>
+                                    <input type="radio" value="latex" name="Latex" class="a11y">
+                                </li>
+                                <li>
+                                    <label for="rtf">Rich text <span>.rtf</span></label>
+                                    <input type="radio" value="rtf" name="RTF" class="a11y">
+                                </li>
+                                <li>
+                                    <label for="Docx">MS Word <span>.docx</span></label>
+                                    <input type="radio" value="docx" name="DOCX" class="a11y">
+                                </li>
+                                <li>
+                                    <label for="Epub">ebook <span>.epub</span></label>
+                                    <input type="radio" value="epub" name="ePub" class="a11y">
+                                </li>
+                            </ul>
+                        </div> <!-- /end .nav-group -->
+                    </div> <!-- /end .nav-desktop -->
+                    <div class="nav-mobile">
+                        <div class="nav-group views-group">
+                            <h3 class="nav-hdg-2">Views</h3>
+                            <ul class="h-list views-list">
+                                <li><a href="/docs/{{ unified.doc.id }}"><span class="icon-wrapper"><i class="is-icon ico-hover-view-editor"></i></span>Editor</a></li>
+                                <li><a href="/docs/{{ unified.doc.id }}/preview"><span class="icon-wrapper"><i class="is-icon ico-hover-view-preview"></i></span>Preview</a></li>
+                                <li><a href="/docs/{{ unified.doc.id }}/html"><span class="icon-wrapper"><i class="is-icon ico-hover-view-html"></i></span>HTML</a></li>
+                            </ul>
+                        </div> <!-- /end .nav-group -->
+                        <div class="mobile-list">
+                            <ul class="nav-mobile-list full-width-links">
+                                 <li><a class="has-icon ico-hover-home" href="/docs">Home</a></li>
+                                 <li><a class="has-icon ico-nav-new-doc new-document" href="/docs/new#new-document">New document</a></li>
+                                 <li><a class="has-icon ico-nav-help" href="/help">Help</a></li>
+                                 <li><a class="has-icon ico-nav-cheatsheet cheat-sheet" href="#">Cheat sheet<i class="is-icon ico-nav-next-arrow"></i></a></li>
+                                 <li><a class="has-icon ico-nav-leave leave-document" href="/collaborate/{{ unified.doc.id }}/leave">Leave</a></li>
+                                 <li><a class="has-icon ico-nav-delete delete-document" href="/docs/{{ unified.doc.id }}/delete">Delete</a></li>
+                                 <li><a class="has-icon ico-nav-integrations mobile-integrations" href="#">Publishing<i class="is-icon ico-nav-next-arrow"></i></a></li>
+                                 <li><a class="has-icon ico-nav-export mobile-export" href="#">Export<i class="is-icon ico-nav-next-arrow"></i></a></li>
+                                 <li><a class="has-icon ico-nav-archive" href="#">Archive</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+            
+            <h2 class="hdg-styles">Invitations</h2>
+            <div data-xrayhtml class="prism">
+                <div class="invites">
+                    <h2 class="a11y">Current Invitations</h2>
+                    <div class="invite">
+                        <h3 class="title">Title of the Document</h3>
+                        <p class="who">Invited <time>July 15, 2013</time> by <cite>John Doe</cite></p>
+                        <div class="act">
+                            <form>
+                                <label class="btn btn-med btn-type-secondary">Decline <input type="submit"></label>
+                                <label class="btn btn-med accept">Accept <input type="submit"></label>
+                            </form>
+                        </div>
+                    </div>
+                </div> <!-- /end .invites -->
+            </div>
+            
+            
+        </div> <!-- /end .main-content -->
+    </div> <!-- /end .ed-main -->
+</div>
+
+
+    
+</div><!-- /end .ed-outer -->
+
+
+
+
+</body>
+</html>
